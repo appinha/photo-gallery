@@ -1,6 +1,16 @@
 import './App.css';
-import LoginScreen from './screens/LoginScreen';
+import { Navigator, useScreenComponent } from './navigator';
 
 export default function App() {
-  return <LoginScreen />;
+  return (
+    <Navigator>
+      <CurrentScreen />
+    </Navigator>
+  );
+}
+
+function CurrentScreen () {
+  const ScreenComponent = useScreenComponent();
+
+  return <ScreenComponent />;
 }
