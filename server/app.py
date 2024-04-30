@@ -4,6 +4,7 @@ from flask_cors import CORS
 from api.database import db
 from api.views import views
 from api.users.controllers import create_user
+from api.photos.controllers import import_photos_from_json
 
 
 def setup_database(app):
@@ -20,6 +21,7 @@ def setup_database(app):
         db.create_all()
 
         create_user(os.getenv("USER_ADMIN_USERNAME"), os.getenv("USER_ADMIN_PASSWORD"))
+        import_photos_from_json("api/photos/photos.json")
 
 
 def create_app():
