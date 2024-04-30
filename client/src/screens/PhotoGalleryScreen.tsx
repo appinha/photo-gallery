@@ -40,8 +40,18 @@ export default function GalleryScreen() {
     }, [])
 
   const onStar = (id: string, method: "POST" | "DELETE") => {
-    const action = method === "POST" ? "starred" : "unstarred";
-    console.log(`Photo of id ${id} was ${action}`);
+    if (!token) return navigate(Screen.Login)
+
+    fetch(`${API_URL}/photos/star`, {
+      method,
+      headers :{
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": token,
+      },
+      body: JSON.stringify( { id } )
+    })
   }
 
   const getContent = () => {
