@@ -15,15 +15,23 @@ make install
 docker run --name photo_gallery-db -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
 ```
 
-- Add the needed variables in the `.env` file, for example:
+3. Add the needed variables in the `.env` file, for example:
 
 ```
-DB_USER=user
-DB_PASSWORD=password
+APP_SECRET_KEY="app_secret_key"
+
+DB_USER="user"
+DB_PASSWORD="password"
 DB_HOST="localhost:5432/postgres"
+
+JWT_ALGORITHM="HS256"
+JWT_SECRET_KEY="jwt_secret_key"
+
+USER_ADMIN_USERNAME="admin"
+USER_ADMIN_PASSWORD="123"
 ```
 
-2. Run api:
+4. Run api:
 
 ```Bash
 make

@@ -1,6 +1,8 @@
+import os
+import jwt
 from functools import wraps
 from flask import request, make_response
-from api.users.controllers import get_user_by_token
+from api.users.controllers import get_user_by_id
 
 
 def token_required(func):
@@ -13,7 +15,12 @@ def token_required(func):
             return make_response({"message": "No token provided in authorization"}, 401)
 
         try:
-            user = get_user_by_token(token)
+            data = jwt.decode(
+                token,
+                os.getenv("JWT_SECRET_KEY"),
+                algorithms=os.getenv("JWT_ALGORITHM")
+            )
+            user = get_user_by_id(data["id"])
         except Exception as e:
             return make_response({"message": "Invalid token"}, 401)
 

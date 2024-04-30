@@ -3,6 +3,7 @@ from flask import Flask
 from flask_cors import CORS
 from api.database import db
 from api.views import views
+from api.users.controllers import create_user
 
 
 def setup_database(app):
@@ -14,6 +15,11 @@ def setup_database(app):
 
     with app.app_context():
         db.init_app(app)
+
+        from api.models import models
+        db.create_all()
+
+        create_user(os.getenv("USER_ADMIN_USERNAME"), os.getenv("USER_ADMIN_PASSWORD"))
 
 
 def create_app():

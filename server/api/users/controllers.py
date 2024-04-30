@@ -1,31 +1,40 @@
 import os
+import jwt
+from datetime import datetime, timedelta
+from werkzeug.security import generate_password_hash, check_password_hash
+from api.users.models import db, User
 
 
-user_by_username = {
-    "admin": {
-        "username": os.getenv("USER_ADMIN_USERNAME"),
-        "password": os.getenv("USER_ADMIN_PASSWORD"),
-        "token": "mock_token",
-    }
-}
+def create_user(username, password):
+    if not username or not password or get_user_by_username(username):
+        return
 
-
-user_by_token = {
-    "mock_token": user_by_username["admin"],
-}
+    user = User(
+        username=username,
+        password=generate_password_hash(password)
+    )
+    db.session.add(user)
+    db.session.commit()
 
 
 def get_user_by_username(username):
-    return user_by_username.get(username)
+    return User.query.filter_by(username=username).first()
 
 
-def get_user_by_token(token):
-    return user_by_token[token]
+def get_user_by_id(id):
+    return User.query.filter_by(id=id).first()
 
 
 def check_password(user, password):
-    return user["password"] == password
+    return check_password_hash(user.password, password)
 
 
 def generate_token(user):
-    return user["token"]
+    return jwt.encode(
+        {
+            "id": user.id,
+            "exp": datetime.utcnow() + timedelta(minutes=30)
+        },
+        os.getenv("JWT_SECRET_KEY"),
+        os.getenv("JWT_ALGORITHM")
+    )
