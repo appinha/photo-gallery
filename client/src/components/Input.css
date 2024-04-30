@@ -1,0 +1,31 @@
+#input {
+  margin-bottom: 20px;
+}
+
+#input .title {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+#input input {
+  width: 297px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #111827;
+  background-color: #fff;
+  padding: 0 10px 0 10px;
+  border-radius: 8px;
+  border: 1px solid #9CA3AF;
+}
+#input input:focus-visible {
+  outline: #80baf5 auto 1px;
+}
+
+#input .errorLabel {
+  position:absolute;
+  color: red;
+  font-size: 12px;
+}

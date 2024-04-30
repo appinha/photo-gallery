@@ -1,0 +1,18 @@
+#loginScreen {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loginScreen .formContainer {
+  margin-top: 36px;
+}
+
+#loginScreen button {
+  width: 319px;
+  height: 44px;
+  color: #fff;
+  margin-top: 6px;
+}

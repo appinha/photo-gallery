@@ -1,6 +1,6 @@
 import './App.css';
-import Logo from './components/Logo';
+import LoginScreen from './screens/LoginScreen';
 
 export default function App() {
-  return <Logo />;
+  return <LoginScreen />;
 }
