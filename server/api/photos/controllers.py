@@ -1,13 +1,16 @@
 import json
-from api.photos.models import db, Photo
+from api.photos.models import db, Photo, PhotoStar
 
 
 def get_all_photos(user):
-    photos = Photo.query.all()
+    subquery = db.session.query(PhotoStar.photo_id).filter_by(user_id=user.id).subquery()
+    photos = db.session.query(
+        Photo, subquery.c.photo_id.isnot(None).label('is_starred')
+        ).outerjoin(subquery, Photo.id == subquery.c.photo_id).all()
 
     return [
-        {**photo.as_dict(), 'is_starred': False}
-        for photo in photos
+        {**photo.as_dict(), 'is_starred': is_starred}
+        for photo, is_starred in photos
     ]
 
 
@@ -15,12 +18,25 @@ def get_photo_by_url(url):
     return Photo.query.filter_by(url=url).first()
 
 
-def create_photo_like():
-    pass
+def ger_user_photo_star(user_id, photo_id):
+    return PhotoStar.query.filter_by(user_id=user_id, photo_id=photo_id).first()
 
 
-def delete_photo_like():
-    pass
+def create_photo_star(user_id, photo_id):
+    if not user_id or not photo_id or ger_user_photo_star(user_id, photo_id):
+        return
+
+    photo_star = PhotoStar(user_id=user_id, photo_id=photo_id)
+    db.session.add(photo_star)
+    db.session.commit()
+
+
+def delete_photo_star(user_id, photo_id):
+    if not user_id or not photo_id or not ger_user_photo_star(user_id, photo_id):
+        return
+
+    PhotoStar.query.filter_by(user_id=user_id, photo_id=photo_id).delete()
+    db.session.commit()
 
 
 def import_photos_from_json(file):

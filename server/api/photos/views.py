@@ -1,7 +1,7 @@
 from flask import jsonify, make_response, request
 from flask.blueprints import Blueprint
 from api.utils.decorators import token_required
-from api.photos.controllers import get_all_photos, create_photo_like, delete_photo_like
+from api.photos.controllers import get_all_photos, create_photo_star, delete_photo_star
 
 
 photos = Blueprint('photos', __name__)
@@ -18,7 +18,7 @@ def get_photos(user):
 
 @photos.post("/photos/star")
 @token_required
-def add_photo_like(user):
+def add_photo_star(user):
     data = request.json
     photo_id = data.get("id")
 
@@ -26,22 +26,22 @@ def add_photo_like(user):
         return make_response({"message": "Photo id not provided"}, 400)
 
     try:
-        create_photo_like()
-        return make_response({"message": "Photo like created"}, 201)
+        create_photo_star(user.id, photo_id)
+        return make_response({"message": "Photo star created"}, 201)
     except Exception:
         return make_response({"message": "Internal error"}, 500)
 
 
 @photos.delete("/photos/star")
 @token_required
-def remove_photo_like(user):
+def remove_photo_star(user):
     data = request.json
     photo_id = data.get("id")
 
     if not (photo_id):
         return make_response({"message": "Photo id not provided"}, 400)
     try:
-        delete_photo_like()
-        return make_response({"message": "Photo like deleted"}, 200)
+        delete_photo_star(user.id, photo_id)
+        return make_response({"message": "Photo star deleted"}, 200)
     except Exception:
         return make_response({"message": "Internal error"}, 500)
