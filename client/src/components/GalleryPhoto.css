@@ -1,0 +1,68 @@
+#galleryPhoto {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+#galleryPhoto .star {
+  width: 20px;
+  cursor: pointer;
+}
+
+#galleryPhoto .thumbnail {
+  min-width: 75px;
+  min-height: 75px;
+  background-size: cover;
+  border-radius: 8px;
+  margin: 0 12px 0 12px;
+}
+
+#galleryPhoto .left-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#galleryPhoto .right-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 12px;
+}
+
+#galleryPhoto .text-container {
+  font-size: 14px;
+  text-wrap: wrap;
+}
+
+#galleryPhoto .title {
+  font-weight: 700;
+}
+
+#galleryPhoto .avg-color {
+  display: flex;
+  align-items: center;
+}
+
+#galleryPhoto .square {
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+}
+
+#galleryPhoto .portfolio-url {
+  display: flex;
+  align-items: center;
+}
+
+#galleryPhoto .link-img {
+  width: 12px;
+  height: 12px;
+}
+
+#galleryPhoto a {
+  color: #0075EB;
+  font-size: 12px;
+  margin-left: 4px;
+}
