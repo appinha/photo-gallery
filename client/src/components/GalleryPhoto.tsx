@@ -1,22 +1,16 @@
 import { useState } from 'react'
-import './GalleryPhoto.css'
+import { Photo } from '../utils/adapters'
 import starFill from '../assets/star-fill.svg'
 import starLine from '../assets/star-line.svg'
 import linkImg from '../assets/links.svg'
+import './GalleryPhoto.css'
 
 type Props = {
-  id: string;
-  photographer: string;
-  photographerUrl: string;
-  alt: string;
-  thumbnail: string;
-  avgColor: string;
-  isStarred: boolean | undefined;
   onStar: (id: string, method: "POST" | "DELETE") => void;
-}
+} & Photo;
 
 export default function GalleryPhoto(props: Props) {
-  const { id, photographerUrl, thumbnail, photographer, avgColor, alt, onStar } = props;
+  const { id, photographerUrl, srcTiny, photographer, avgColor, alt, onStar } = props;
   const [isStarred, setIsStarred] = useState(props.isStarred)
 
   const onClick = () => {
@@ -39,7 +33,7 @@ export default function GalleryPhoto(props: Props) {
       <div className="left-container">
 
         {isStarred ? starredIcon : notStarredIcon}
-        <div className="thumbnail" style={{ backgroundImage: `url(${thumbnail})` }}></div>
+        <div className="thumbnail" style={{ backgroundImage: `url(${srcTiny})` }}></div>
 
         <div className="text-container">
           <div className="title">{photographer}</div>
