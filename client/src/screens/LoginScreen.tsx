@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Screen, useNavigation } from '../navigator';
 import Logo from '../components/Logo';
 import Input from '../components/Input';
 import './LoginScreen.css';
 
 export default function LoginScreen() {
+  const { navigate } = useNavigation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -21,8 +23,8 @@ export default function LoginScreen() {
     if (password.length === 0)
       return setPasswordError("Please provide a password")
 
-    if (username === "admin" && password === "123" )
-      console.log("Signin authorized")
+    if (username === "admin" && password === "123") navigate(Screen.Gallery)
+    else setPasswordError("Incorrect username or password")
   };
 
   const usernameInput = <Input
