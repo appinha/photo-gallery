@@ -1,3 +1,6 @@
+import getUserToken from "./getUserToken"
+
 export default function isUserSignedIn() {
-  return false;
+  const token = getUserToken()
+  return Boolean(token && token.length > 0)
 }

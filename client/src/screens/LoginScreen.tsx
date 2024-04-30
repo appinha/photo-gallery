@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { API_URL } from '../constants';
+import saveUserToken from '../utils/saveUserToken';
 import { Screen, useNavigation } from '../navigator';
 import Logo from '../components/Logo';
 import Input from '../components/Input';
@@ -23,8 +25,25 @@ export default function LoginScreen() {
     if (password.length === 0)
       return setPasswordError("Please provide a password")
 
-    if (username === "admin" && password === "123") navigate(Screen.Gallery)
-    else setPasswordError("Incorrect username or password")
+    fetch(`${API_URL}/users/sign-in`, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify( { username, password } )
+    }).then(res => {
+      if (res.status === 200) return res.json()
+      if (res.status === 401) setPasswordError("Incorrect username or password")
+    }).then(res => {
+      if (!res.token || res.token.length === 0)
+        return setPasswordError("Something went wrong, try again later")
+      saveUserToken(res.token)
+      navigate(Screen.Gallery)
+    }).catch(error => {
+      if (error.message === "Failed to fetch")
+        setPasswordError("Something went wrong, try again later")
+    })
   };
 
   const usernameInput = <Input
