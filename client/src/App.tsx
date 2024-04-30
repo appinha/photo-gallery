@@ -1,6 +1,6 @@
-import logo from '/logo.svg';
 import './App.css';
+import Logo from './components/Logo';
 
 export default function App() {
-  return <img src={logo} className="logo" alt="Logo" />;
+  return <Logo />;
 }
