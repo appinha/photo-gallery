@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<i>A fullstack project with React + Typescript and Flask.</i>
+	<i>A fullstack project with React and Flask.</i>
 </p>
 
 
