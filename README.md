@@ -19,6 +19,8 @@
 	<a href="#%EF%B8%8F-about">About</a>
 	<span> · </span>
 	<a href="#%EF%B8%8F-usage">Usage</a>
+	<span> · </span>
+	<a href="#%EF%B8%8F-work-log">Work log</a>
 </h3>
 
 ---
@@ -38,7 +40,7 @@ A minimal website app for displaying a photo gallery. Stack:
 
 Refer to the README files inside the `client` and `server` folders.
 
-## Work log
+## 📄 Work log
 
 ### 0. Pre-work
 
