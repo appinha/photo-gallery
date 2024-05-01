@@ -12,6 +12,12 @@ make install
 make
 ```
 
+3. Run test:
+
+```Bash
+make test
+```
+
 ---
 
 # React + TypeScript + Vite
