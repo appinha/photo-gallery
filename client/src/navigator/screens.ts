@@ -7,7 +7,7 @@ export enum Screen {
   Gallery,
 };
 
-export const initScreen: Screen = isUserSignedIn() ? Screen.Gallery : Screen.Login;
+export const getInitScreen = () => isUserSignedIn() ? Screen.Gallery : Screen.Login;
 
 export const getScreenComponent = (screen: Screen) => screen === Screen.Login
   ? LoginScreen
