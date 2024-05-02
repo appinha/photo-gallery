@@ -13,4 +13,4 @@ lint:
 
 .PHONY: format
 prettier:
-	black *.py api/
+	black --line-length=79 *.py api/
