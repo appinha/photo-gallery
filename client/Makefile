@@ -13,6 +13,6 @@ test:
 lint:
 	npm run lint
 
-.PHONY: prettier
-prettier:
+.PHONY: format
+format:
 	npx prettier . --write
