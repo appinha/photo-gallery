@@ -26,5 +26,5 @@ export type Photo = ReturnType<typeof photoAdapter>;
 const photoAdapter = (photo: RemotePhoto) => snakeToCamelCase(photo);
 
 export function photosAdapter(photos: RemotePhoto[]) {
-  return photos.map(p => photoAdapter(p))
+  return photos.map((p) => photoAdapter(p));
 }

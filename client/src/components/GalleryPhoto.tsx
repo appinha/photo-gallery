@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { Photo } from '../utils/adapters'
-import starFill from '../assets/star-fill.svg'
-import starLine from '../assets/star-line.svg'
-import linkImg from '../assets/links.svg'
-import './GalleryPhoto.css'
+import { useState } from "react";
+import { Photo } from "../utils/adapters";
+import starFill from "../assets/star-fill.svg";
+import starLine from "../assets/star-line.svg";
+import linkImg from "../assets/links.svg";
+import "./GalleryPhoto.css";
 
 type Props = {
   onStar: (id: string, method: "POST" | "DELETE") => void;
@@ -11,23 +11,24 @@ type Props = {
 
 export default function GalleryPhoto(props: Props) {
   const { id, photographerUrl, srcTiny, photographer, avgColor, alt, onStar } = props;
-  const [isStarred, setIsStarred] = useState(props.isStarred)
+  const [isStarred, setIsStarred] = useState(props.isStarred);
 
   const onClick = () => {
-    setIsStarred(!isStarred)
-    onStar(id, isStarred ? "DELETE" : "POST")
+    setIsStarred(!isStarred);
+    onStar(id, isStarred ? "DELETE" : "POST");
   };
 
   const starredIcon = <img src={starFill} className="star" alt="Starred" onClick={onClick} />;
-  const notStarredIcon = <img src={starLine} className="star" alt="Not Starred" onClick={onClick} />;
+  const notStarredIcon = (
+    <img src={starLine} className="star" alt="Not Starred" onClick={onClick} />
+  );
 
   const thumbnail = (
     <div
       className="thumbnail"
       style={{ backgroundImage: `url(${srcTiny})` }}
       data-testid="thumbnail"
-    >
-    </div>
+    ></div>
   );
 
   const averageColorSquare = (
@@ -35,8 +36,7 @@ export default function GalleryPhoto(props: Props) {
       style={{ backgroundColor: avgColor }}
       className="square"
       data-testid="avgColorSquare"
-    >
-    </div>
+    ></div>
   );
 
   const averageColor = (
@@ -49,7 +49,6 @@ export default function GalleryPhoto(props: Props) {
   return (
     <div id="galleryPhoto">
       <div className="left-container">
-
         {isStarred ? starredIcon : notStarredIcon}
         {thumbnail}
 
@@ -58,16 +57,15 @@ export default function GalleryPhoto(props: Props) {
           <div>{alt}</div>
           {averageColor}
         </div>
-
       </div>
       <div className="right-container">
-
         <div className="portfolio-url">
           <img src={linkImg} className="link-img" data-testid="linkImg" />
-          <a href={photographerUrl} target="_blank">Porftolio</a>
+          <a href={photographerUrl} target="_blank">
+            Porftolio
+          </a>
         </div>
-
       </div>
     </div>
-  )
+  );
 }

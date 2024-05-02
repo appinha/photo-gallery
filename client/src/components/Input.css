@@ -18,14 +18,14 @@
   background-color: #fff;
   padding: 0 10px 0 10px;
   border-radius: 8px;
-  border: 1px solid #9CA3AF;
+  border: 1px solid #9ca3af;
 }
 #input input:focus-visible {
   outline: #80baf5 auto 1px;
 }
 
 #input .errorLabel {
-  position:absolute;
+  position: absolute;
   color: red;
   font-size: 12px;
 }

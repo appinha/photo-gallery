@@ -41,7 +41,7 @@ describe("Input", () => {
   it("on value change, triggers the value setter callback with the new value", async () => {
     render(<Input {...defaultProps} />);
 
-    const input = screen.getByLabelText("Title")
+    const input = screen.getByLabelText("Title");
     fireEvent.change(input, { target: { value: "another value" } });
 
     expect(setValueMock).toHaveBeenCalledTimes(1);
@@ -53,7 +53,7 @@ describe("Input", () => {
 
     expect(screen.getByText("error message")).toBeDefined();
 
-    const input = screen.getByLabelText("Title")
+    const input = screen.getByLabelText("Title");
     fireEvent.focus(input);
 
     expect(setErrorTextMock).toHaveBeenCalledTimes(1);

@@ -8,9 +8,7 @@ import * as navigator from "../navigator";
 import { server } from "./server-mock/server";
 
 declare module "vitest" {
-  interface Assertion<T = any>
-    extends jest.Matchers<void, T>,
-      TestingLibraryMatchers<T, void> {}
+  interface Assertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
 }
 
 expect.extend(matchers);

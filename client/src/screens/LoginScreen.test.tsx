@@ -21,7 +21,7 @@ describe("LoginScreen", () => {
     await waitFor(() => {
       expect(screen.getByDisplayValue("my_password")).toBeDefined();
     });
-  }
+  };
 
   beforeEach(() => {
     server.use(
@@ -93,9 +93,7 @@ describe("LoginScreen", () => {
     });
 
     it("if user is authorized, but no token is returned, renders error text", async () => {
-      server.use(
-        http.post(`${API_URL}/users/sign-in`, () => HttpResponse.json({})),
-      );
+      server.use(http.post(`${API_URL}/users/sign-in`, () => HttpResponse.json({})));
 
       render(<LoginScreen />);
 
@@ -112,7 +110,10 @@ describe("LoginScreen", () => {
 
     it("if user is not authorized, renders error text", async () => {
       server.use(
-        http.post(`${API_URL}/users/sign-in`, () => new HttpResponse("Unauthorized", { status: 401 })),
+        http.post(
+          `${API_URL}/users/sign-in`,
+          () => new HttpResponse("Unauthorized", { status: 401 }),
+        ),
       );
 
       render(<LoginScreen />);
@@ -130,7 +131,10 @@ describe("LoginScreen", () => {
 
     it("on server error, renders error text", async () => {
       server.use(
-        http.post(`${API_URL}/users/sign-in`, () => new HttpResponse("Server error", { status: 500 })),
+        http.post(
+          `${API_URL}/users/sign-in`,
+          () => new HttpResponse("Server error", { status: 500 }),
+        ),
       );
 
       render(<LoginScreen />);

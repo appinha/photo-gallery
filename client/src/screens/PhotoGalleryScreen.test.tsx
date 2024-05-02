@@ -14,9 +14,7 @@ describe("Logo", () => {
   beforeEach(() => {
     vi.spyOn(getUserToken, "default").mockReturnValueOnce("tokenMock");
 
-    server.use(
-      http.get(`${API_URL}/photos`, () => HttpResponse.json({ photos: photosMock })),
-    );
+    server.use(http.get(`${API_URL}/photos`, () => HttpResponse.json({ photos: photosMock })));
   });
 
   it("renders the logo", () => {
@@ -42,7 +40,7 @@ describe("Logo", () => {
 
     await waitFor(() => {
       expect(screen.getByText(photoMock1.photographer)).toBeDefined();
-    })
+    });
 
     expect(screen.getByText(photoMock2.photographer)).toBeDefined();
   });
@@ -88,14 +86,17 @@ describe("Logo", () => {
   it("on star click, posts and deletes star", async () => {
     server.use(
       http.post(`${API_URL}/photos/star`, () => new HttpResponse("Star created", { status: 201 })),
-      http.delete(`${API_URL}/photos/star`, () => new HttpResponse("Star deleted", { status: 200 })),
+      http.delete(
+        `${API_URL}/photos/star`,
+        () => new HttpResponse("Star deleted", { status: 200 }),
+      ),
     );
 
     render(<PhotoGalleryScreen />);
 
     await waitFor(() => {
       expect(screen.getAllByAltText("Not Starred")).toHaveLength(2);
-    })
+    });
 
     fireEvent.click(screen.getAllByAltText("Not Starred")[0]);
 

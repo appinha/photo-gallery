@@ -3,7 +3,7 @@ import { Screen } from "./screens";
 
 type NavigationContextType = {
   screen: Screen;
-  setScreen:(s: Screen) => void;
+  setScreen: (s: Screen) => void;
 };
 
 export const NavigationContext = createContext<NavigationContextType>({

@@ -1,5 +1,5 @@
-import './App.css';
-import { Navigator, useScreenComponent } from './navigator';
+import "./App.css";
+import { Navigator, useScreenComponent } from "./navigator";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
   );
 }
 
-function CurrentScreen () {
+function CurrentScreen() {
   const ScreenComponent = useScreenComponent();
 
   return <ScreenComponent />;

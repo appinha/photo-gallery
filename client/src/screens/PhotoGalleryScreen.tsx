@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { API_URL } from '../constants';
-import getUserToken from '../utils/getUserToken';
-import { Screen, useNavigation } from '../navigator';
-import { Photo, RemotePhoto, photosAdapter } from '../utils/adapters';
-import Logo from '../components/Logo'
-import GalleryPhoto from '../components/GalleryPhoto';
-import './PhotoGalleryScreen.css'
+import { useEffect, useState } from "react";
+import { API_URL } from "../constants";
+import getUserToken from "../utils/getUserToken";
+import { Screen, useNavigation } from "../navigator";
+import { Photo, RemotePhoto, photosAdapter } from "../utils/adapters";
+import Logo from "../components/Logo";
+import GalleryPhoto from "../components/GalleryPhoto";
+import "./PhotoGalleryScreen.css";
 
 export default function PhotoGalleryScreen() {
   const { navigate } = useNavigation();
@@ -19,12 +19,12 @@ export default function PhotoGalleryScreen() {
 
     fetch(`${API_URL}/photos`, {
       method: "GET",
-      headers :{
-        "Accept": "application/json",
+      headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": token,
-      }
+        Authorization: token,
+      },
     })
       .then((res) => {
         if (res.status === 200) return res.json();
@@ -35,25 +35,25 @@ export default function PhotoGalleryScreen() {
         if (!res || !res.photos) return;
         setData(photosAdapter(res.photos as RemotePhoto[]));
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error);
       });
-    }, [])
+  }, []);
 
   const onStar = (id: string, method: "POST" | "DELETE") => {
-    if (!token) return navigate(Screen.Login)
+    if (!token) return navigate(Screen.Login);
 
     fetch(`${API_URL}/photos/star`, {
       method,
-      headers :{
-        "Accept": "application/json",
+      headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": token,
+        Authorization: token,
       },
-      body: JSON.stringify( { id } )
-    })
-  }
+      body: JSON.stringify({ id }),
+    });
+  };
 
   const getContent = () => {
     if (error) return "An error has occurred, please try again";
@@ -61,7 +61,7 @@ export default function PhotoGalleryScreen() {
     if (!data) return "Loading...";
 
     return data.map((item) => <GalleryPhoto key={item.id} {...item} onStar={onStar} />);
-  }
+  };
 
   return (
     <div id="photoGalleryScreen">
@@ -69,5 +69,5 @@ export default function PhotoGalleryScreen() {
       <h1>All photos</h1>
       {getContent()}
     </div>
-  )
+  );
 }
