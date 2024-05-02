@@ -1,4 +1,25 @@
-import { Photo } from "../../utils/adapters";
+import { Photo, RemotePhoto } from "../../utils/adapters";
+
+export const remotePhotoMock: RemotePhoto = {
+  id: "1",
+  width: 500,
+  height: 300,
+  url: "url",
+  photographer: "Photographer's Name",
+  photographer_url: "photographerUrl",
+  photographer_id: "photographerId",
+  avg_color: "#FFFFFF",
+  src_original: "srcOriginal",
+  src_large2x: "srcLarge2x",
+  src_large: "srcLarge",
+  src_medium: "srcMedium",
+  src_small: "srcSmall",
+  src_portrait: "srcPortrait",
+  src_landscape: "srcLandscape",
+  src_tiny: "srcTiny",
+  alt: "Alt text",
+  is_starred: false,
+};
 
 export const photoMock: Photo = {
   id: "1",
