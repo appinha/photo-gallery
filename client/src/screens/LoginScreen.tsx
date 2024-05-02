@@ -53,7 +53,8 @@ export default function LoginScreen() {
     setValue={setUsername}
     errorText={usernameError}
     setErrorText={setUsernameError}
-  />;
+    data-testid="usernameInput"
+    />;
 
   const passwordInput = <Input
     title="Password"
@@ -63,6 +64,7 @@ export default function LoginScreen() {
     setValue={setPassword}
     errorText={passwordError}
     setErrorText={setPasswordError}
+    data-testid="passwordInput"
   />;
 
   return (
