@@ -15,17 +15,16 @@ export default function Input(props: Props) {
 
   return (
     <div id="input">
-      <label>
-        <div className="title">{title}</div>
-        <input
-          type={type}
-          value={value}
-          placeholder={placeholder}
-          onChange={(e) => setValue(e.target.value)}
-          onFocus={() => setErrorText("")}
-        />
-        <div className="errorLabel">{errorText}</div>
-      </label>
+      <div className="title"><label htmlFor="input_">{title}</label></div>
+      <input
+        id="input_"
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => setValue(e.target.value)}
+        onFocus={() => setErrorText("")}
+      />
+      <div className="errorLabel">{errorText}</div>
     </div>
   );
 }
