@@ -6,7 +6,6 @@
 	<i>A fullstack project with React and Flask.</i>
 </p>
 
-
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/appinha/photo-gallery?color=blueviolet" />
 	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/appinha/photo-gallery?color=blueviolet" />
@@ -44,36 +43,36 @@ Refer to the README files inside the `client` and `server` folders.
 
 ### 0. Pre-work
 
-- [x]  [client] Research most up-to-date ways of creating a React app and choose the best fit
-- [x]  [server] Decide on the backend stack
+- [x] [client] Research most up-to-date ways of creating a React app and choose the best fit
+- [x] [server] Decide on the backend stack
 
 ### 1. Create client app with mocked funcionality
 
-- [x]  [client] Create app using Vite + React + TS
-- [x]  [client] Create sign-in page UI (with mock sign-in validation)
-- [x]  [client] Create navigation layer + navigate to (empty) photo gallery page from sign-in
-- [x]  [client] Create photo gallery page UI (with mock data and starring behavior in local state)
+- [x] [client] Create app using Vite + React + TS
+- [x] [client] Create sign-in page UI (with mock sign-in validation)
+- [x] [client] Create navigation layer + navigate to (empty) photo gallery page from sign-in
+- [x] [client] Create photo gallery page UI (with mock data and starring behavior in local state)
 
 ### 2. Create api to serve mocked data + connect client to api
 
-- [x]  [server] Create api with Flask
-- [x]  [server] Create `/users/sign-in` endpoint to serve mocked token
-- [x]  [client] Authenticate user on sign-in page
-- [x]  [server] Create protected `/photos` endpoint to serve mocked data (imported from JSON)
-- [x]  [client] Fetch photo data from server (with authorization)
-- [x]  [server] Create `/photos/star` endpoint to create and remove photo stars
-- [x]  [client] Add request to add/remove photo stars
+- [x] [server] Create api with Flask
+- [x] [server] Create `/users/sign-in` endpoint to serve mocked token
+- [x] [client] Authenticate user on sign-in page
+- [x] [server] Create protected `/photos` endpoint to serve mocked data (imported from JSON)
+- [x] [client] Fetch photo data from server (with authorization)
+- [x] [server] Create `/photos/star` endpoint to create and remove photo stars
+- [x] [client] Add request to add/remove photo stars
 
 ### 3. Set up database
 
-- [x]  [server] Set up database on api
-- [x]  [server] Create `User` tabule + update controllers + create admin user on app start
-- [x]  [server] Create `Pthoto` table + update controllers
-- [x]  [server] Create `PhotoStar` table + update controllers
+- [x] [server] Set up database on api
+- [x] [server] Create `User` tabule + update controllers + create admin user on app start
+- [x] [server] Create `Pthoto` table + update controllers
+- [x] [server] Create `PhotoStar` table + update controllers
 
 ### 4. Testing and linting
 
-- [x]  [client] Add testing
-- [x]  [client] Set up linter and prettier
-- [ ]  [server] Add testing
-- [ ]  [server] Set up linter and prettier
+- [x] [client] Add testing
+- [x] [client] Set up linter and formatter
+- [ ] [server] Add testing
+- [ ] [server] Set up linter and formatter
