@@ -73,7 +73,7 @@ Refer to the README files inside the `client` and `server` folders.
 
 ### 4. Testing and linting
 
-- [ ]  [client] Add testing
+- [x]  [client] Add testing
 - [ ]  [client] Set up linter and prettier
 - [ ]  [server] Add testing
 - [ ]  [server] Set up linter and prettier
