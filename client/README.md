@@ -18,6 +18,18 @@ make
 make test
 ```
 
+4. Run linter:
+
+```Bash
+make lint
+```
+
+5. Run formatter:
+
+```Bash
+make format
+```
+
 ---
 
 # React + TypeScript + Vite
