@@ -8,3 +8,11 @@ install:
 .PHONY: test
 test:
 	npm run test
+
+.PHONY: lint
+lint:
+	npm run lint
+
+.PHONY: prettier
+prettier:
+	npx prettier . --write
