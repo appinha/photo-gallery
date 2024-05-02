@@ -12,22 +12,27 @@ def setup_database(app):
     db_password = os.getenv("DB_PASSWORD")
     db_host = os.getenv("DB_HOST")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{db_user}:{db_password}@{db_host}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        f"postgresql://{db_user}:{db_password}@{db_host}"
+    )
 
     with app.app_context():
         db.init_app(app)
 
-        from api.models import models
+        from api.models import models  # noqa
+
         db.create_all()
 
-        create_user(os.getenv("USER_ADMIN_USERNAME"), os.getenv("USER_ADMIN_PASSWORD"))
+        create_user(
+            os.getenv("USER_ADMIN_USERNAME"), os.getenv("USER_ADMIN_PASSWORD")
+        )
         import_photos_from_json("api/photos/photos.json")
 
 
 def create_app():
     app = Flask(__name__)
     CORS(app)
-    app.config.from_pyfile('settings.py')
+    app.config.from_pyfile("settings.py")
     app.secret_key = os.getenv("APP_SECRET_KEY")
 
     setup_database(app)

@@ -12,16 +12,18 @@ def token_required(func):
         token = request.headers.get("Authorization", None)
 
         if not token:
-            return make_response({"message": "No token provided in authorization"}, 401)
+            return make_response(
+                {"message": "No token provided in authorization"}, 401
+            )
 
         try:
             data = jwt.decode(
                 token,
                 os.getenv("JWT_SECRET_KEY"),
-                algorithms=os.getenv("JWT_ALGORITHM")
+                algorithms=os.getenv("JWT_ALGORITHM"),
             )
             user = get_user_by_id(data["id"])
-        except Exception as e:
+        except Exception:
             return make_response({"message": "Invalid token"}, 401)
 
         return func(user, *args, **kwargs)

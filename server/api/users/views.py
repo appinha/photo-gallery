@@ -1,9 +1,13 @@
 from flask import request, make_response
 from flask.blueprints import Blueprint
-from api.users.controllers import get_user_by_username, check_password, generate_token
+from api.users.controllers import (
+    get_user_by_username,
+    check_password,
+    generate_token,
+)
 
 
-users = Blueprint('users', __name__)
+users = Blueprint("users", __name__)
 
 
 @users.post("/users/sign-in")
