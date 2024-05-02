@@ -33,16 +33,19 @@ export default function LoginScreen() {
       },
       body: JSON.stringify( { username, password } )
     }).then(res => {
-      if (res.status === 200) return res.json()
-      if (res.status === 401) setPasswordError("Incorrect username or password")
+      if (res.status === 200) return res.json();
+      return res;
     }).then(res => {
-      if (!res.token || res.token.length === 0)
-        return setPasswordError("Something went wrong, try again later")
-      saveUserToken(res.token)
-      navigate(Screen.Gallery)
-    }).catch(error => {
-      if (error.message === "Failed to fetch")
-        setPasswordError("Something went wrong, try again later")
+      if (res.token && res.token.length > 0) {
+        saveUserToken(res.token);
+        navigate(Screen.Gallery);
+      } else if (res.status === 401) {
+        setPasswordError("Incorrect username or password");
+      } else {
+        throw new Error("Server error");
+      };
+    }).catch(_ => {
+      setPasswordError("Something went wrong, try again later");
     })
   };
 
