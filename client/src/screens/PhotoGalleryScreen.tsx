@@ -38,7 +38,7 @@ export default function PhotoGalleryScreen() {
       .catch((error) => {
         setError(error);
       });
-  }, []);
+  }, [navigate, token]);
 
   const onStar = (id: string, method: "POST" | "DELETE") => {
     if (!token) return navigate(Screen.Login);

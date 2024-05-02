@@ -45,7 +45,7 @@ export default function LoginScreen() {
           throw new Error("Server error");
         }
       })
-      .catch((_) => {
+      .catch(() => {
         setPasswordError("Something went wrong, try again later");
       });
   };

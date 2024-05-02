@@ -8,6 +8,7 @@ import * as navigator from "../navigator";
 import { server } from "./server-mock/server";
 
 declare module "vitest" {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface Assertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
 }
 
