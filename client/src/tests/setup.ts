@@ -4,6 +4,7 @@ import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers"
 import * as matchers from "@testing-library/jest-dom/matchers";
 import { afterEach } from "vitest";
 import { cleanup } from "@testing-library/react";
+import * as navigator from "../navigator";
 import { server } from "./server-mock/server";
 
 declare module "vitest" {
@@ -14,6 +15,9 @@ declare module "vitest" {
 
 expect.extend(matchers);
 
+export const navigateMock = vi.fn();
+vi.spyOn(navigator, "useNavigation").mockReturnValue({ navigate: navigateMock });
+
 beforeAll(() => {
   server.listen();
 });
@@ -21,6 +25,7 @@ beforeAll(() => {
 afterEach(() => {
   cleanup();
   server.resetHandlers();
+  navigateMock.mockReset();
 });
 
 afterAll(() => {

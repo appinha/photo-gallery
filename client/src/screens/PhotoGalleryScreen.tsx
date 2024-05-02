@@ -9,7 +9,7 @@ import './PhotoGalleryScreen.css'
 
 export default function PhotoGalleryScreen() {
   const { navigate } = useNavigation();
-  const [data, setData] = useState<Photo[]>([]);
+  const [data, setData] = useState<Photo[]>();
   const [error, setError] = useState<Error>();
 
   const token = getUserToken();
@@ -27,15 +27,16 @@ export default function PhotoGalleryScreen() {
       }
     })
       .then((res) => {
-        if (res.status === 200) return res.json()
-        if (res.status === 401) navigate(Screen.Login)
-        throw new Error("Server error")
+        if (res.status === 200) return res.json();
+        if (res.status === 401) return navigate(Screen.Login);
+        throw new Error("Server error");
       })
       .then((res) => {
-        setData(photosAdapter(res.photos as RemotePhoto[]))
+        if (!res || !res.photos) return;
+        setData(photosAdapter(res.photos as RemotePhoto[]));
       })
       .catch(error => {
-        setError(error)
+        setError(error);
       });
     }, [])
 
@@ -57,7 +58,7 @@ export default function PhotoGalleryScreen() {
   const getContent = () => {
     if (error) return "An error has occurred, please try again";
 
-    if (data.length === 0) return "Loading...";
+    if (!data) return "Loading...";
 
     return data.map((item) => <GalleryPhoto key={item.id} {...item} onStar={onStar} />);
   }
