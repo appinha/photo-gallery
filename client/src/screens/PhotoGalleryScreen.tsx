@@ -7,7 +7,7 @@ import Logo from '../components/Logo'
 import GalleryPhoto from '../components/GalleryPhoto';
 import './PhotoGalleryScreen.css'
 
-export default function GalleryScreen() {
+export default function PhotoGalleryScreen() {
   const { navigate } = useNavigation();
   const [data, setData] = useState<Photo[]>([]);
   const [error, setError] = useState<Error>();
