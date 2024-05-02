@@ -36,3 +36,15 @@ USER_ADMIN_PASSWORD="123"
 ```Bash
 make
 ```
+
+5. Run linter:
+
+```Bash
+make lint
+```
+
+5. Run formatter:
+
+```Bash
+make format
+```
