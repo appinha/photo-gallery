@@ -21,19 +21,37 @@ export default function GalleryPhoto(props: Props) {
   const starredIcon = <img src={starFill} className="star" alt="Starred" onClick={onClick} />;
   const notStarredIcon = <img src={starLine} className="star" alt="Not Starred" onClick={onClick} />;
 
+  const thumbnail = (
+    <div
+      className="thumbnail"
+      style={{ backgroundImage: `url(${srcTiny})` }}
+      data-testid="thumbnail"
+    >
+    </div>
+  );
+
+  const averageColorSquare = (
+    <div
+      style={{ backgroundColor: avgColor }}
+      className="square"
+      data-testid="avgColorSquare"
+    >
+    </div>
+  );
+
   const averageColor = (
     <div className="avg-color">
       <div style={{ color: avgColor }}>{avgColor}</div>
-      <div style={{ backgroundColor: avgColor }} className="square"></div>
+      {averageColorSquare}
     </div>
-  )
+  );
 
   return (
     <div id="galleryPhoto">
       <div className="left-container">
 
         {isStarred ? starredIcon : notStarredIcon}
-        <div className="thumbnail" style={{ backgroundImage: `url(${srcTiny})` }}></div>
+        {thumbnail}
 
         <div className="text-container">
           <div className="title">{photographer}</div>
@@ -45,7 +63,7 @@ export default function GalleryPhoto(props: Props) {
       <div className="right-container">
 
         <div className="portfolio-url">
-          <img src={linkImg} className="link-img" />
+          <img src={linkImg} className="link-img" data-testid="linkImg" />
           <a href={photographerUrl} target="_blank">Porftolio</a>
         </div>
 
