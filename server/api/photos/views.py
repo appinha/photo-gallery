@@ -17,7 +17,7 @@ def get_photos(user):
     try:
         return make_response(jsonify({"photos": get_all_photos(user)}), 200)
     except Exception:
-        return make_response({"message": "Internal error"}, 500)
+        return make_response("Internal error", 500)
 
 
 @photos.post("/photos/star")
@@ -27,13 +27,13 @@ def add_photo_star(user):
     photo_id = data.get("id")
 
     if not (photo_id):
-        return make_response({"message": "Photo id not provided"}, 400)
+        return make_response("Photo id not provided", 400)
 
     try:
         create_photo_star(user.id, photo_id)
-        return make_response({"message": "Photo star created"}, 201)
+        return make_response("Photo star created", 201)
     except Exception:
-        return make_response({"message": "Internal error"}, 500)
+        return make_response("Internal error", 500)
 
 
 @photos.delete("/photos/star")
@@ -43,9 +43,9 @@ def remove_photo_star(user):
     photo_id = data.get("id")
 
     if not (photo_id):
-        return make_response({"message": "Photo id not provided"}, 400)
+        return make_response("Photo id not provided", 400)
     try:
         delete_photo_star(user.id, photo_id)
-        return make_response({"message": "Photo star deleted"}, 200)
+        return make_response("Photo star deleted", 200)
     except Exception:
-        return make_response({"message": "Internal error"}, 500)
+        return make_response("Internal error", 500)
