@@ -75,4 +75,4 @@ Refer to the README files inside the `client` and `server` folders.
 - [x] [client] Add testing
 - [x] [client] Set up linter and formatter
 - [ ] [server] Add testing
-- [ ] [server] Set up linter and formatter
+- [x] [server] Set up linter and formatter
