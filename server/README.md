@@ -22,7 +22,8 @@ APP_SECRET_KEY="app_secret_key"
 
 DB_USER="user"
 DB_PASSWORD="password"
-DB_HOST="localhost:5432/postgres"
+DB_HOST="localhost:5432"
+DB_NAME="postgres"
 
 JWT_ALGORITHM="HS256"
 JWT_SECRET_KEY="jwt_secret_key"
@@ -37,13 +38,33 @@ USER_ADMIN_PASSWORD="123"
 make
 ```
 
-5. Run linter:
+5. Run tests:
+
+- Create test env:
+
+```Bash
+make test-env
+```
+
+- Run tests:
+
+```Bash
+make test
+```
+
+- Delete test env:
+
+```Bash
+make del-test-env
+```
+
+6. Run linter:
 
 ```Bash
 make lint
 ```
 
-5. Run formatter:
+7. Run formatter:
 
 ```Bash
 make format
