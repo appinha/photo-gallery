@@ -29,7 +29,7 @@
 A minimal website app for displaying a photo gallery. Stack:
 
 - **Front-end:** Typescript, React, Vite, Vitest, Testing Library.
-- **Back-end:** Python, Flask, Postgres, SQLAlchemy, JWT, Docker.
+- **Back-end:** Python, Flask, Postgres, SQLAlchemy, JWT, Docker, Pytest.
 
 ![Screenshot of Sign In page](sign_in.png)
 
