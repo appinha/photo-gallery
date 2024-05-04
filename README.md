@@ -74,5 +74,5 @@ Refer to the README files inside the `client` and `server` folders.
 
 - [x] [client] Add testing
 - [x] [client] Set up linter and formatter
-- [ ] [server] Add testing
+- [x] [server] Add testing
 - [x] [server] Set up linter and formatter
